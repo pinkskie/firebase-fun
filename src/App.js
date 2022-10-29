@@ -29,6 +29,7 @@ const AUTH_LINK = `https://accounts.spotify.com/authorize?response_type=code&cli
 function App() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(true);
+  const [isDark, setDark] = useState(true);
 
   const favouritesRef = firebase.firestore().collection("favourites");
   const params = new URLSearchParams(window.location.search);
@@ -51,8 +52,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={isDark ? "App dark" : "App"}>
       <div className="login">
+        <button onClick={() => setDark((v) => !v)}>OAKSOAKS</button>
         <a href={AUTH_LINK}>login</a>
       </div>
       <Dashboard />

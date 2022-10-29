@@ -12,30 +12,31 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="user">
         <img src={avatar} alt="avatar" />
-        <p>Bob Smith</p>
+        <span>Bob Smith</span>
       </div>
       <ul className="links">
         <li>
           <img src={headphonesIcon} alt="headphones" />
-          <p>Discover</p>
+          <span>Discover</span>
         </li>
         <li>
           <img src={searchIcon} alt="headphones" />
-          <p>Search</p>
+          <span>Search</span>
         </li>
         <li>
           <img src={heartIcon} alt="headphones" />
-          <p>Favorites</p>
+          <span>Favorites</span>
         </li>
         <li>
           <img src={playlistIcon} alt="headphones" />
-          <p>Playlists</p>
+          <span>Playlists</span>
         </li>
         <li>
           <img src={musicListIcon} alt="headphones" />
-          <p>Charts</p>
+          <span>Charts</span>
         </li>
       </ul>
+      <input className="search" placeholder="search" />
     </div>
   );
 }
