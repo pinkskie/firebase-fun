@@ -13,15 +13,17 @@ code {
 }
 
 :root {
-  --background: #564ed9;
-  --background-secondary: #ffb6a8;
+  --background: white;
+  --sidebar-background: #564ed9;
+  --header-background: #ffb6a8;
   --text-primary: black;
   --text-secondary: royalblue;
   --accent: purple;
 }
 .dark {
   --background: black;
-  --background-secondary: rgb(46, 45, 45);
+  --sidebar-background: black;
+  --header-background: rgb(46, 45, 45);
   --text-primary: white;
   --text-secondary: grey;
   --accent: darkred;

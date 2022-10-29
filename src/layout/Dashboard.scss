@@ -9,17 +9,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: var(--background-secondary);
+      background-color: var(--header-background);
       width: 100%;
       .art {
-        width: 15rem;
-        height: 15rem;
+        height: 13rem;
+        margin-top: 1rem;
+        margin-left: 2rem;
       }
       .text {
         text-align: right;
         color: white;
         font-size: 1.2rem;
         margin-right: 4rem;
+        h2 {
+          img {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -28,6 +34,7 @@
 @media screen and (max-width: 600px) {
   .dashboard {
     .content {
+      margin-left: 4rem;
       .header {
         .art {
           display: none;

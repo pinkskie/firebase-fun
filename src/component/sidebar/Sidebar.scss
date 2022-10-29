@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: var(--background);
+  background-color: var(--sidebar-background);
   color: var(--text-primary);
   width: 15rem;
   height: 100vh;
@@ -9,10 +9,13 @@
     align-items: center;
     justify-content: center;
     color: white;
-    img {
+    &--avatar {
       margin-top: 2rem;
       width: 4rem;
       height: 4rem;
+    }
+    &--name {
+      font-weight: 600;
     }
   }
   .links {
@@ -36,17 +39,32 @@
     top: 2rem;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: white;
     padding: 1rem;
-    border: 1px solid rgba(117, 117, 117, 0.329);
+    border: 1px solid rgb(117 117 117 / 5%);
     border-radius: 1rem;
     outline: none;
+    box-shadow: -1px 2px 8px 0px rgba(34, 60, 80, 0.2);
+    transition: all 0.2s;
+    animation: translate;
+  }
+}
+
+@keyframes tranlate {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(5rem);
   }
 }
 
 @media screen and (max-width: 600px) {
   .sidebar {
     width: 4rem;
-    p {
+    position: fixed;
+    left: 0;
+    span {
       display: none;
     }
     .user {
@@ -62,6 +80,11 @@
       img {
         width: 1.3rem;
       }
+    }
+    .search {
+      top: 0;
+      border-radius: 0;
+      width: 100%;
     }
   }
 }

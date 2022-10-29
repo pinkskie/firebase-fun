@@ -1,7 +1,7 @@
-import { refEqual } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import "./App.css";
 import firebase from "./firebase";
+import { useTheme } from "./hooks/useTheme";
 import Dashboard from "./layout/Dashboard";
 
 // import * as firebase from "firebase/app";
@@ -24,13 +24,10 @@ import Dashboard from "./layout/Dashboard";
 // const auth = firebase.auth();
 // const firestore = firebase.firestore();
 
-const AUTH_LINK = `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&scope=user-library-read&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
-
 function App() {
+  const { theme } = useTheme();
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(true);
-  const [isDark, setDark] = useState(true);
-
   const favouritesRef = firebase.firestore().collection("favourites");
   const params = new URLSearchParams(window.location.search);
 
@@ -52,11 +49,7 @@ function App() {
   }, []);
 
   return (
-    <div className={isDark ? "App dark" : "App"}>
-      <div className="login">
-        <button onClick={() => setDark((v) => !v)}>OAKSOAKS</button>
-        <a href={AUTH_LINK}>login</a>
-      </div>
+    <div className={theme}>
       <Dashboard />
     </div>
   );

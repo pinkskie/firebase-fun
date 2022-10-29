@@ -11,8 +11,8 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="user">
-        <img src={avatar} alt="avatar" />
-        <span>Bob Smith</span>
+        <img src={avatar} alt="avatar" className="user--avatar" />
+        <span className="user--name">Bob Smith</span>
       </div>
       <ul className="links">
         <li>
@@ -36,7 +36,7 @@ export default function Sidebar() {
           <span>Charts</span>
         </li>
       </ul>
-      <input className="search" placeholder="search" />
+      <input className="search" placeholder="Search..." />
     </div>
   );
 }
