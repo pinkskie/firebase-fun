@@ -1,0 +1,55 @@
+.block {
+  padding: 1.2rem;
+  .head {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    .title {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: rgb(207, 204, 204);
+      letter-spacing: 0.05rem;
+    }
+    .divider {
+      flex: 1;
+      height: 0.13rem;
+      opacity: 0.1;
+      background-color: rgb(184, 184, 184);
+    }
+    .arrows {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+  }
+  .row {
+    display: flex;
+    margin-left: 1rem;
+    gap: 2.5rem;
+    .single {
+      text-align: center;
+      img {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .block {
+    .head {
+      gap: 0.5rem;
+    }
+    .row {
+      max-width: 9rem;
+      overflow-y: scroll;
+      margin: 0 auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
