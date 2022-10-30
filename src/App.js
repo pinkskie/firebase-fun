@@ -1,56 +1,42 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./App.css";
-import firebase from "./firebase";
+import useData from "./hooks/useData";
 import { useTheme } from "./hooks/useTheme";
+
+import Block from "./component/block/Block";
+
 import Dashboard from "./layout/Dashboard";
-
-// import * as firebase from "firebase/app";
-// import {getAuth} from "firebase/auth";
-// import "firebase/firestore";
-
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { useCollectionData } from "react-firebase-hooks/firestore";
-
-// firebase.initializeApp({
-//   apiKey: "AIzaSyBvIbL0G6iJ_GQC4Bm45-VPyJpi_nt07Uk",
-//   authDomain: "texta-5d312.firebaseapp.com",
-//   projectId: "texta-5d312",
-//   storageBucket: "texta-5d312.appspot.com",
-//   messagingSenderId: "472958046615",
-//   appId: "1:472958046615:web:ef85fcc854994a8cc7b4d2",
-//   measurementId: "G-FT6WCHVM0K",
-// });
-
-// const auth = firebase.auth();
-// const firestore = firebase.firestore();
+import { getAlbums, getPlaylists } from "./services/api";
 
 function App() {
   const { theme } = useTheme();
-  const [data, setData] = useState([]);
-  const [loader, setLoader] = useState(true);
-  const favouritesRef = firebase.firestore().collection("favourites");
-  const params = new URLSearchParams(window.location.search);
-
-  const getData = () => {
-    favouritesRef.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((res) => {
-        items.push(res.data());
-      });
-
-      setData(items);
-      setLoader(false);
-    });
-  };
+  const { isLoading, user } = useData("users");
+  const [albums, setAlbums] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getData();
-    console.log(data);
+    if (!localStorage.getItem("userId")) {
+      navigate("/login");
+      return;
+    }
+    getAlbums().then((res) => setAlbums(res.albums));
+    getPlaylists().then((res) => setPlaylists(res.tracks.items));
   }, []);
 
   return (
     <div className={theme}>
-      <Dashboard />
+      {isLoading ? "Loading..." : ""}
+      <pre>
+        {JSON.stringify({ user, id: localStorage.getItem("userId") }, null, 2)}
+      </pre>
+      <Dashboard>
+        <Block musics={playlists} title={"Albums"} />
+        <Block musics={playlists} title={"Playlists"} />
+        <Block musics={playlists} title={"Categories"} />
+      </Dashboard>
     </div>
   );
 }

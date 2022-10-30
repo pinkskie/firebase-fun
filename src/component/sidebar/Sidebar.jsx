@@ -8,11 +8,17 @@ import playlistIcon from "./icons/play-circle.svg";
 import searchIcon from "./icons/search.svg";
 
 export default function Sidebar() {
+  const logOut = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("userId");
+  };
+
   return (
     <div className="sidebar">
       <div className="user">
-        <img src={avatar} alt="avatar" className="user--avatar" />
-        <span className="user--name">Bob Smith</span>
+        <img src={avatar} alt="avatar" className="user-avatar" />
+        <span className="user-name">Bob Smith</span>
+        <button onClick={logOut}>LOGOUT</button>
       </div>
       <ul className="links">
         <li>

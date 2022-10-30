@@ -9,12 +9,12 @@
     align-items: center;
     justify-content: center;
     color: white;
-    &--avatar {
+    &-avatar {
       margin-top: 2rem;
       width: 4rem;
       height: 4rem;
     }
-    &--name {
+    &-name {
       font-weight: 600;
     }
   }
@@ -47,6 +47,7 @@
     box-shadow: -1px 2px 8px 0px rgba(34, 60, 80, 0.2);
     transition: all 0.2s;
     animation: translate;
+    z-index: 100;
   }
 }
 

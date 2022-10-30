@@ -1,7 +1,6 @@
 import "./Dashboard.scss";
 
 import Sidebar from "../component/sidebar/Sidebar";
-import Block from "../component/block/Block";
 
 import man from "./assets/man.png";
 import woman from "./assets/woman.png";
@@ -9,7 +8,7 @@ import sun from "./assets/icons/sun.svg";
 import moon from "./assets//icons/moon.svg";
 import { useTheme } from "../hooks/useTheme";
 
-export default function Dashboard() {
+export default function Dashboard({children}) {
   const { theme, setTheme } = useTheme();
   return (
     <div className="dashboard">
@@ -26,9 +25,7 @@ export default function Dashboard() {
             </h2>
           </div>
         </header>
-        <Block />
-        <Block />
-        <Block />
+        {children}
       </div>
     </div>
   );
